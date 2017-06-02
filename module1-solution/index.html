@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <title>Lunch Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+      .message { font-size: 1.3em; font-weight: bold; }
+      body     { background: url(images/background.jpeg) no-repeat center center fixed;
+                 -webkit-background-size: cover;
+                 -moz-background-size: cover;
+                 -o-background-size: cover;
+                 background-size: cover;
+                 color:white;
+               }
+    </style>
+  </head>
+<body ng-app="LunchCheck">
+   <div ng-controller="LunchCheckController" class="container">
+     <h1>Lunch Checker</h1>
+         <div class="form-group">
+             <input type="text" ng-model="lunchOrder"
+             placeholder="list comma separated dishes you usually have for lunch"
+             class="form-control">
+             Empty items between commas will not be counted
+         </div>
+         <div class="form-group">
+             <button ng-click="check()" class="btn btn-default">Check If Too Much</button>
+         </div>
+         <div class="form-group message">
+           {{checkResult}}
+         </div>
+   </div>
+</body>
+</html>
