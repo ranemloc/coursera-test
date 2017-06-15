@@ -2,24 +2,40 @@
 <html lang="en">
   <head>
     <title>Narrow Down Your Menu Choice</title>
+    <script src="app/angular.min.js"></script>
+    <script src="app/app.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/font-awesome-4.7.0/css/font-awesome.min.css">
   </head>
-<body>
-   <div class="container">
-    <h1>Narrow Down Your Chinese Menu Choice</h1>
-
+<body ng-app='NarrowItDownApp'>
+   <div class="container" ng-controller="NarrowItDownController as narrowCtrl">
+    <h1 class="header-nav">
+      <img width="40" height="40" src="images/soup.png" alt="Soup">
+      Narrow down your Chinese menu choice
+    </h1>
     <div class="form-group">
-      <input type="text" placeholder="search term" class="form-control">
+      <input type="text" ng-model="narrowCtrl.searchTerm" placeholder="search term (e.g: duck)" class="form-control">
     </div>
     <div class="form-group narrow-button">
-      <button class="btn btn-primary">Narrow It Down For Me!</button>
+      <button ng-click="narrowCtrl.searchAndNarrow()" class="btn btn-primary">Narrow It Down For Me!</button>
     </div>
 
-    <!-- found-items should be implemented as a component -->
-    <found-items found-items="...." on-remove="...."></found-items>
-  </div>
+    <div class="result">
+      <h3 class="warning" ng-if="narrowCtrl.nothingFound">Nothing found!</h3>
 
+      <span ng-if="narrowCtrl.found.length > 0">
+        <found-items
+          items="narrowCtrl.found"
+          on-remove="narrowCtrl.removeItem(index)"
+        ></found-items>
+      </span>
+    </div>
+    <a href="../index.html">
+      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      Back to the assignments list
+    </a>
+  </div>
 </body>
 </html>
