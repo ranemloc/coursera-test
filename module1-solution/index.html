@@ -15,6 +15,12 @@
                  background-size: cover;
                  color:white;
                }
+      .back-link {
+        background-color: white;
+        border-color: #ccc;
+        border-radius: 4px;
+        padding: 5px;
+      }
     </style>
   </head>
 <body ng-app="LunchCheck">
@@ -32,6 +38,10 @@
          <div class="form-group message">
            {{checkResult}}
          </div>
+         <br><br>
+         <a href="../index.html" class="back-link">
+           &lt;- Back to the assignments list
+         </a>
    </div>
 </body>
 </html>
