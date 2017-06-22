@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>David's restaurant menu</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+  </head>
+  <body ng-app="MenuApp" class="container">
+
+    <!-- Site header -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <img width="40" height="40" src="images/soup.png" alt="Brand">
+            <!-- <img alt="Brand" src="images/soup.png"> -->
+          </a>
+          <h1 class="navbar-text">Welcome to David's restaurant!</h1>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Placeholder for the site view states -->
+    <ui-view></ui-view>
+
+    <br>
+    <a href="../index.html">
+      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      Back to the assignments list
+    </a>
+
+    <!-- Load libraries -->
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-ui-router.min.js"></script>
+
+    <!-- Load modules -->
+    <script src="src/data/data.module.js"></script>
+    <script src="src/menuapp/menuapp.module.js"></script>
+
+    <!-- Define routes (View states) -->
+    <script src="src/menuapp/routes.js"></script>
+
+    <!-- Load components and services -->
+    <script src="src/data/menudata.service.js"></script>
+    <script src="src/menuapp/categories.component.js"></script>
+    <script src="src/menuapp/menu-items.component.js"></script>
+
+  </body>
+</html>
