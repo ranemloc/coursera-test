@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<div class="container">
+  <h1>Sign up to receive our newsletter!</h1>
+  <br>
+  <form ng-if="!signupCtrl.submitSuccess" name="signupForm" novalidate class="col-xs-12 col-md-6">
+
+    <!-- First Name -->
+    <div class="form-group">
+      <label for="inputFirstName">First name *</label>
+      <input type="text" name="inputFirstName" class="form-control"
+             ng-model="signupCtrl.user.firstName"
+             required
+             placeholder="enter your first name">
+    </div>
+
+    <!-- Last Name -->
+    <div class="form-group">
+      <label for="inputLastName">Last name *
+      </label>
+      <input type="text" name="inputLastName" class="form-control"
+             ng-model="signupCtrl.user.lastName"
+             required
+             placeholder="enter your last name">
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="inputEmail">Email address *</label>
+      <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
+             ng-model="signupCtrl.user.email"
+             required
+             placeholder="enter your email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+
+    <!-- Phone number -->
+    <div class="form-group">
+      <label for="inputPhoneNr">Phone number *</label>
+      <input type="tel" class="form-control" id="inputPhoneNr"
+             ng-model="signupCtrl.user.phoneNr"
+             required
+             pattern="(\d{3})-(\d{3})-(\d{4})"
+             placeholder="enter your phone number">
+      <small id="phoneHelp" class="form-text text-muted">Must be in the format ###-###-####</small>
+    </div>
+
+    <!-- Favourite menu item -->
+    <div class="form-group">
+      <label for="inputFavItem">Favourite menu dish</label>
+      <input type="text" class="form-control" id="inputFavItem"
+             ng-model="signupCtrl.user.favItem"
+             ng-blur="signupCtrl.checkFavItem(signupCtrl.user.favItem)"
+             placeholder="enter your favourite menu dish">
+      <small id="favItemHelp" class="form-text text-muted">The small code listed together with the dish picture (e.g. "A1")</small>
+    </div>
+
+    <!-- Favourite item alert -->
+    <div ng-if="signupCtrl.invalidFavItem" class="alert alert-danger">The specified favourite does not exists</div>
+
+    <!-- Submit button -->
+    <div class="form-group">
+      <button type="button" class="btn btn-primary"
+              ng-disabled="signupForm.$invalid"
+              ng-click="signupCtrl.submit()">Submit</button>
+      <small id="submitHelp" class="form-text text-muted">The fields with a '*' in the name are mandatory</small>
+    </div>
+
+  </form>
+
+  <div ng-if="signupCtrl.submitSuccess" class="alert alert-success">
+    <p>Your information has been saved. Check it <a ui-sref="public.myinfo">here</a></p>
+  </div>
+
+</div>

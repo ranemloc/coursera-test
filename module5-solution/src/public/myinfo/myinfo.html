@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<div class="container">
+  <div ng-if="myinfoCtrl.user">
+    <div class="row">
+      <h3>Your personal details:</h3>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>First name</td>
+            <td>{{myinfoCtrl.user.firstName}}</td>
+          </tr>
+          <tr>
+            <td>Last name</td>
+            <td>{{myinfoCtrl.user.lastName}}</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>{{myinfoCtrl.user.email}}</td>
+          </tr>
+          <tr>
+            <td>Phone number</td>
+            <td>{{myinfoCtrl.user.phoneNr}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <h3>Your favourite dish:</h3>
+      <menu-item ng-if="myinfoCtrl.favItem"
+                 menu-item="myinfoCtrl.favItem">
+      </menu-item>
+      <p ng-if="!myinfoCtrl.favItem">You have not a favourite dish yet</p>
+    </div>
+  </div>
+  <div ng-if="!myinfoCtrl.user">
+    Please <a ui-sref="public.signup">sign up</a> to receive our newsletter
+  </div>
+</div>
